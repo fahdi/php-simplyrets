@@ -1,0 +1,60 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "0c026cf8f6b9e7d0379c96862ba9d3b8",
+    "packages": [
+        {
+            "name": "travis/ex",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swt83/php-ex.git",
+                "reference": "16a500a8b5f29d070a39f6a2ea7f1ff3950250e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swt83/php-ex/zipball/16a500a8b5f29d070a39f6a2ea7f1ff3950250e4",
+                "reference": "16a500a8b5f29d070a39f6a2ea7f1ff3950250e4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/ex.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Scott Travis",
+                    "email": "scott.w.travis@gmail.com"
+                }
+            ],
+            "description": "A PHP function to safely extract information from a multi-dimensional object or array.",
+            "homepage": "https://github.com/swt83/php-ex",
+            "support": {
+                "source": "https://github.com/swt83/php-ex/tree/v1.0.0",
+                "issues": "https://github.com/swt83/php-ex/issues"
+            },
+            "time": "2017-02-14T17:53:38+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.3.0"
+    },
+    "platform-dev": []
+}
