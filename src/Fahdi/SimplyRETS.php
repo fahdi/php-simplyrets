@@ -63,6 +63,29 @@ class SimplyRETS {
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 		curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 2 );
 		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, true );
+		curl_setopt( $ch, CURLOPT_VERBOSE, 1 );
+
+		// this function is called by curl for each header received
+		curl_setopt( $ch, CURLOPT_HEADERFUNCTION,
+			function ( $curl, $header ) use ( &$headers ) {
+				$len    = strlen( $header );
+				$header = explode( ':', $header, 2 );
+				if ( count( $header ) < 2 ) // ignore invalid headers
+				{
+					return $len;
+				}
+
+				$name = strtolower( trim( $header[0] ) );
+				if ( ! array_key_exists( $name, $headers ) ) {
+					$headers[ $name ] = [ trim( $header[1] ) ];
+				} else {
+					$headers[ $name ][] = trim( $header[1] );
+				}
+
+				return $len;
+			}
+		);
+
 		$response = curl_exec( $ch );
 		$code     = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
 
@@ -83,6 +106,10 @@ class SimplyRETS {
 
 		// decode
 		$response = json_decode( $response );
+
+		$response['total-count'] = $headers['x-total-count'][0];
+
+		// echo $endpoint;
 
 		// catch error...
 		if ( $code !== 200 ) {
